@@ -136,6 +136,104 @@ public class BookingView extends JFrame {
         }
         updateInfo();
     }
-}
+    
+    private void addInfoPanel() {
+        infoPanel = new JPanel();
+        infoPanel.setOpaque(false);
+        infoPanel.setLayout(null);
+        infoPanel.setBounds(380, 70, 320, 250);
 
+        JLabel infoTitle = new JLabel("Your Information");
+        infoTitle.setFont(new Font("SansSerif", Font.BOLD, 16));
+        infoTitle.setForeground(PURPLE);
+        infoTitle.setBounds(10, 0, 200, 30);
+        infoPanel.add(infoTitle);
+
+        JLabel dateLabel = new JLabel("DATE");
+        dateLabel.setFont(new Font("SansSerif", Font.BOLD, 12));
+        dateLabel.setForeground(PURPLE);
+        dateLabel.setBounds(10, 40, 100, 20);
+        infoPanel.add(dateLabel);
+
+        JComboBox<String> dateBox = new JComboBox<>(new String[]{"Thu, 28 Aug — 7:30 pm"});
+        dateBox.setBounds(10, 60, 250, 25);
+        infoPanel.add(dateBox);
+
+        JLabel ticketText = new JLabel("TICKET NUMBER:");
+        ticketText.setFont(new Font("SansSerif", Font.BOLD, 13));
+        ticketText.setForeground(PURPLE);
+        ticketText.setBounds(10, 100, 150, 20);
+        infoPanel.add(ticketText);
+
+        ticketLabel = new JLabel("0");
+        ticketLabel.setBounds(160, 100, 50, 20);
+        infoPanel.add(ticketLabel);
+
+        JLabel priceText = new JLabel("PRICE:");
+        priceText.setFont(new Font("SansSerif", Font.BOLD, 13));
+        priceText.setForeground(PURPLE);
+        priceText.setBounds(10, 130, 100, 20);
+        infoPanel.add(priceText);
+
+        priceLabel = new JLabel("0.00");
+        priceLabel.setBounds(160, 130, 100, 20);
+        infoPanel.add(priceLabel);
+
+        JLabel eventLabel = new JLabel("Event: Mamma Mia");
+        eventLabel.setFont(new Font("SansSerif", Font.BOLD, 13));
+        eventLabel.setForeground(PURPLE);
+        eventLabel.setBounds(10, 160, 200, 20);
+        infoPanel.add(eventLabel);
+
+        JLabel pricePerTicket = new JLabel("Price per ticket: $84.00");
+        pricePerTicket.setFont(new Font("SansSerif", Font.BOLD, 13));
+        pricePerTicket.setForeground(PURPLE);
+        pricePerTicket.setBounds(10, 190, 250, 20);
+        infoPanel.add(pricePerTicket);
+
+        mainPanel.add(infoPanel);
+    }
+
+    private void addBookButton() {
+        JButton bookButton = new JButton("Book Tickets");
+        bookButton.setBackground(PURPLE);
+        bookButton.setForeground(Color.WHITE);
+        bookButton.setFont(new Font("SansSerif", Font.BOLD, 14));
+        bookButton.setFocusPainted(false);
+        bookButton.setBounds(520, 340, 180, 40);
+        bookButton.setBorder(BorderFactory.createEmptyBorder());
+        bookButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        bookButton.setOpaque(true);
+
+        bookButton.addActionListener(e -> {
+            if (selectedSeats.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please select at least one seat.", "No Seats Selected", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            String message = "Successfully booked " + selectedSeats.size() + " tickets for Mamma Mia.\nTotal: " + bookingController.bookSeats(selectedSeats);
+            JOptionPane.showMessageDialog(this, message, "Booking Confirmed", JOptionPane.INFORMATION_MESSAGE);
+
+            // Reset selected seats
+            for (String code : selectedSeats) {
+                JButton seatBtn = seatButtons.get(code);
+                seatBtn.setBackground(DARK_GRAY);
+                seatBtn.setEnabled(false);
+            }
+            selectedSeats.clear();
+            updateInfo();
+        });
+
+        mainPanel.add(bookButton);
+    }
+
+    private void updateInfo() {
+        ticketLabel.setText(String.valueOf(selectedSeats.size()));
+        priceLabel.setText(bookingController.bookSeats(selectedSeats));
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new BookingView().setVisible(true));
+    }
+}
     
