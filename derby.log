@@ -1,0 +1,18 @@
+Wed Oct 29 19:41:08 NZDT 2025 : Apache Derby Network Server - 10.17.1.0 - (1913217) started and ready to accept connections on port 1527
+----------------------------------------------------------------
+Wed Oct 29 19:41:13 NZDT 2025:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.17.1.0 - (1913217): instance a816c00e-019a-2eb2-d3c6-00006b61f7f6 
+on database directory /Users/shanamusekiwa/Desktop/TicketBookingSystemGUI/ticketdb with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1369b299 
+Loaded from file:/Users/shanamusekiwa/Desktop/db-derby-10.17.1.0-bin/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=24.0.1+9-30
+user.dir=/Users/shanamusekiwa/Desktop/db-derby-10.17.1.0-bin
+os.name=Mac OS X
+os.arch=x86_64
+os.version=13.7.8
+derby.system.home=/Users/shanamusekiwa/Desktop/TicketBookingSystemGUI
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Wed Oct 29 19:41:14 NZDT 2025:
+Shutting down instance a816c00e-019a-2eb2-d3c6-00006b61f7f6 on database directory /Users/shanamusekiwa/Desktop/TicketBookingSystemGUI/ticketdb with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1369b299 
+Wed Oct 29 19:41:14 NZDT 2025 Thread[#31,DRDAConnThread_3,5,main] (DATABASE = ticketdb), (DRDAID = {2}), Database 'ticketdb' shutdown.
