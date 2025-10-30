@@ -12,7 +12,6 @@ import java.awt.Cursor;
 import java.awt.GridLayout;
 import java.awt.event.*;
 import java.util.*;
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 import nz.event.ticketbookingsystem.controller.BookingController;
 import nz.event.ticketbookingsystem.model.Seat;
@@ -261,8 +260,8 @@ public class BookingView extends JFrame {
         return dateBox != null ? (String) dateBox.getSelectedItem() : "Thu, 28 Aug — 7:30 pm";
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new BookingView().setVisible(true));
-    }
+//    public static void main(String[] args) {
+//        SwingUtilities.invokeLater(() -> new BookingView().setVisible(true));
+//    }
 }
     
