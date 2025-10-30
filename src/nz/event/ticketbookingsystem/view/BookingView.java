@@ -12,6 +12,7 @@ import java.awt.Cursor;
 import java.awt.GridLayout;
 import java.awt.event.*;
 import java.util.*;
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 import nz.event.ticketbookingsystem.controller.BookingController;
 import nz.event.ticketbookingsystem.model.Seat;
@@ -27,6 +28,7 @@ public class BookingView extends JFrame {
     private JPanel infoPanel;
     private JLabel ticketLabel;
     private JLabel priceLabel;
+    private JComboBox<String> dateBox;
     private final BookingController bookingController;
     private final Map<String, JButton> seatButtons = new HashMap<>();
     private final List<String> selectedSeats = new ArrayList<>();
@@ -40,8 +42,8 @@ public class BookingView extends JFrame {
         setupFrame();
         setupBackground();
         addHeader();
-        addStageAndSeats();
         addInfoPanel();
+        addStageAndSeats(getSelectedDate());
         addBookButton();
     }
 
@@ -77,7 +79,11 @@ public class BookingView extends JFrame {
         mainPanel.add(header);
     }
 
-    private void addStageAndSeats() {
+    private void addStageAndSeats(String showDate) {
+        if (seatPanel != null) {
+            mainPanel.remove(seatPanel);
+        }
+
         JLabel stage = new JLabel("STAGE", SwingConstants.CENTER);
         stage.setOpaque(true);
         stage.setBackground(Color.GRAY);
@@ -86,7 +92,7 @@ public class BookingView extends JFrame {
         stage.setBounds(40, 70, 300, 30);
         mainPanel.add(stage);
 
-        seatPanel = new JPanel(new GridLayout(5, 6, 5, 5)); // 5x5 + label col
+        seatPanel = new JPanel(new GridLayout(5, 6, 5, 5));
         seatPanel.setOpaque(false);
         seatPanel.setBounds(40, 120, 300, 200);
 
@@ -103,13 +109,21 @@ public class BookingView extends JFrame {
                 }
 
                 Seat seat = allSeats.get(seatIndex++);
-                JButton seatButton = new JButton(String.valueOf(col + 1)); // show numbers 1-5
+                JButton seatButton = new JButton(String.valueOf(col + 1));
                 seatButton.setFont(new Font("SansSerif", Font.BOLD, 10));
                 seatButton.setFocusPainted(false);
                 seatButton.setOpaque(true);
                 seatButton.setBorderPainted(false);
 
-                if (seat.getStatus() == SeatStatus.AVAILABLE) {
+                // Different seat layouts depending on date
+                boolean isAvailable = false;
+                if (showDate.equals("Thu, 28 Aug — 7:30 pm")) {
+                    isAvailable = (row == 2 && col >= 2 && col <= 4); // C3–C5
+                } else if (showDate.equals("Sat, 30 Aug — 2:00 pm")) {
+                    isAvailable = (row == 3 && col >= 3 && col <= 5); // D4–D6
+                }
+
+                if (isAvailable) {
                     seatButton.setBackground(PURPLE);
                     seatButton.setForeground(Color.WHITE);
                     seatButton.addActionListener(e -> toggleSeat(seatButton, seat.getCode()));
@@ -124,6 +138,8 @@ public class BookingView extends JFrame {
         }
 
         mainPanel.add(seatPanel);
+        mainPanel.revalidate();
+        mainPanel.repaint();
     }
 
     private void toggleSeat(JButton button, String code) {
@@ -136,7 +152,7 @@ public class BookingView extends JFrame {
         }
         updateInfo();
     }
-    
+
     private void addInfoPanel() {
         infoPanel = new JPanel();
         infoPanel.setOpaque(false);
@@ -155,9 +171,18 @@ public class BookingView extends JFrame {
         dateLabel.setBounds(10, 40, 100, 20);
         infoPanel.add(dateLabel);
 
-        JComboBox<String> dateBox = new JComboBox<>(new String[]{"Thu, 28 Aug — 7:30 pm"});
+        dateBox = new JComboBox<>(new String[]{
+            "Thu, 28 Aug — 7:30 pm",
+            "Sat, 30 Aug — 2:00 pm"
+        });
         dateBox.setBounds(10, 60, 250, 25);
         infoPanel.add(dateBox);
+
+        dateBox.addActionListener(e -> {
+            selectedSeats.clear(); // clear previous selections
+            updateInfo();
+            addStageAndSeats(getSelectedDate()); // refresh layout
+        });
 
         JLabel ticketText = new JLabel("TICKET NUMBER:");
         ticketText.setFont(new Font("SansSerif", Font.BOLD, 13));
@@ -211,10 +236,10 @@ public class BookingView extends JFrame {
                 return;
             }
 
-            String message = "Successfully booked " + selectedSeats.size() + " tickets for Mamma Mia.\nTotal: " + bookingController.bookSeats(selectedSeats);
+            String message = "Successfully booked " + selectedSeats.size() + " tickets for Mamma Mia on "
+                    + getSelectedDate() + ".\nTotal: " + bookingController.bookSeats(selectedSeats);
             JOptionPane.showMessageDialog(this, message, "Booking Confirmed", JOptionPane.INFORMATION_MESSAGE);
 
-            // Reset selected seats
             for (String code : selectedSeats) {
                 JButton seatBtn = seatButtons.get(code);
                 seatBtn.setBackground(DARK_GRAY);
@@ -232,8 +257,12 @@ public class BookingView extends JFrame {
         priceLabel.setText(bookingController.bookSeats(selectedSeats));
     }
 
-//    public static void main(String[] args) {
-//        SwingUtilities.invokeLater(() -> new BookingView().setVisible(true));
-//    }
+    private String getSelectedDate() {
+        return dateBox != null ? (String) dateBox.getSelectedItem() : "Thu, 28 Aug — 7:30 pm";
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new BookingView().setVisible(true));
+    }
 }
     
