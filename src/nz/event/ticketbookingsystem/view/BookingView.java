@@ -232,8 +232,8 @@ public class BookingView extends JFrame {
         priceLabel.setText(bookingController.bookSeats(selectedSeats));
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new BookingView().setVisible(true));
-    }
+//    public static void main(String[] args) {
+//        SwingUtilities.invokeLater(() -> new BookingView().setVisible(true));
+//    }
 }
     
