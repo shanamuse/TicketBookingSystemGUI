@@ -12,7 +12,8 @@ import nz.event.ticketbookingsystem.model.Seat;
 import nz.event.ticketbookingsystem.model.SeatStatus;
 
 /**
- *
+ * This class handles database operations for Seat entities.
+ * It retrieves seats by date and updates seat status in the SEATS table.
  * @author madhurima
  */
 public class SeatDAO {
