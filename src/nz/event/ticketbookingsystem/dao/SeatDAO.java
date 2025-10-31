@@ -36,9 +36,10 @@ public class SeatDAO {
     public void updateStatus(String code, SeatStatus status) throws SQLException {
         try (Connection conn = Database.getConnection(); PreparedStatement ps = conn.prepareStatement("UPDATE SEATS SET STATUS=? WHERE CODE=?")) {
 
-            ps.setString(1, status.name());
-            ps.setString(2, code);
-            ps.executeUpdate();
-        }
+        ps.setString(1, status.name());
+        ps.setString(2, code);
+        ps.executeUpdate();
     }
+}
+
 }

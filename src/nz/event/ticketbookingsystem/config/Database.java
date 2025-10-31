@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.sql.*;
 
 /**
  *
@@ -16,7 +17,7 @@ import java.sql.ResultSet;
  */
 public class Database {
 
-    private static final String URL = "jdbc:derby:ticketdb;create=true";
+    private static final String URL = "jdbc:derby:/Users/madhurima/DerbyDB/ticketdb;create=true";
     private static boolean initialized = false;
 
     public static Connection getConnection() throws SQLException {

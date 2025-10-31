@@ -8,8 +8,10 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import nz.event.ticketbookingsystem.dao.SeatDAO;
 import nz.event.ticketbookingsystem.model.Seat;
 import nz.event.ticketbookingsystem.model.SeatStatus;
+import java.sql.SQLException;
 
 /**
  *
@@ -43,6 +45,6 @@ public class BookingController {
 
     public String bookSeats(List<String> selectedCodes) {
         double totalPrice = selectedCodes.size() * PRICE_PER_SEAT;
-        return NumberFormat.getCurrencyInstance(Locale.US).format(totalPrice);
-    }
+    return NumberFormat.getCurrencyInstance(Locale.US).format(totalPrice);
+}
 }

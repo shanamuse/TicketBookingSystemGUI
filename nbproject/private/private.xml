@@ -3,12 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Users/madhurima/Documents/GitHub/TicketBookingSystemGUI/src/nz/event/ticketbookingsystem/config/Database.java</file>
+            <file>file:/Users/madhurima/Documents/GitHub/TicketBookingSystemGUI/src/nz/event/ticketbookingsystem/dao/SeatDAO.java</file>
             <file>file:/Users/madhurima/Documents/GitHub/TicketBookingSystemGUI/src/nz/event/ticketbookingsystem/view/HomeGUI.java</file>
             <file>file:/Users/madhurima/Documents/GitHub/TicketBookingSystemGUI/src/nz/event/ticketbookingsystem/view/BookingView.java</file>
-            <file>file:/Users/madhurima/Documents/GitHub/TicketBookingSystemGUI/src/nz/event/ticketbookingsystem/dao/SeatDAO.java</file>
+            <file>file:/Users/madhurima/Documents/GitHub/TicketBookingSystemGUI/src/nz/event/ticketbookingsystem/model/Seat.java</file>
+            <file>file:/Users/madhurima/Documents/GitHub/TicketBookingSystemGUI/src/nz/event/ticketbookingsystem/model/SeatStatus.java</file>
             <file>file:/Users/madhurima/Documents/GitHub/TicketBookingSystemGUI/src/nz/event/ticketbookingsystem/controller/BookingController.java</file>
-            <file>file:/Users/madhurima/Documents/GitHub/TicketBookingSystemGUI/test/nz/event/ticketbookingsystem/tests/BookingControllerTest.java</file>
-            <file>file:/Users/madhurima/Documents/GitHub/TicketBookingSystemGUI/test/nz/event/ticketbookingsystem/tests/SeatTest.java</file>
+            <file>file:/Users/madhurima/Documents/GitHub/TicketBookingSystemGUI/test/nz/event/ticketbookingsystem/controller/BookingControllerTest.java</file>
+            <file>file:/Users/madhurima/Documents/GitHub/TicketBookingSystemGUI/test/nz/event/ticketbookingsystem/model/SeatTest.java</file>
         </group>
     </open-files>
 </project-private>
