@@ -12,7 +12,9 @@ import java.sql.ResultSet;
 import java.sql.*;
 
 /**
- *
+ *This class manages the Derby database connection and setup. 
+ * It creates the SEATS table (if not already present)
+ * and seeds it with default seat data.
  * @author madhurima
  */
 public class Database {

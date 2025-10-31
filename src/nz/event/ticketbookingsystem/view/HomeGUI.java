@@ -11,7 +11,9 @@ import javax.swing.ImageIcon;
 import nz.event.ticketbookingsystem.view.BookingView;
 
 /**
- *
+ *This class is the main homepage of the system.
+ * It displays upcoming events and lets users 
+ * navigate to the seat booking page.
  * @author madhurima
  */
 public class HomeGUI extends javax.swing.JFrame {

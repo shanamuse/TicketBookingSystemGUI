@@ -5,7 +5,8 @@
 package nz.event.ticketbookingsystem.model;
 
 /**
- *
+ *This class defines a single seat in the system. 
+ * It holds the seat code (like “B5”) and its booking status, helping track which seats are available or reserved.
  * @author shanamusekiwa
  */
 public class Seat {

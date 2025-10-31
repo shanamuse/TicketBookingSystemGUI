@@ -14,7 +14,9 @@ import nz.event.ticketbookingsystem.model.SeatStatus;
 import java.sql.SQLException;
 
 /**
- *
+ *This class handles all the booking logic. 
+ *It connects the GUI with the database to get seat data, calculate prices, 
+ *and update seat statuses when tickets are booked.
  * @author shanamusekiwa
  */
 public class BookingController {

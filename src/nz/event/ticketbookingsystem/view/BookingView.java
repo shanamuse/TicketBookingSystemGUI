@@ -19,7 +19,9 @@ import nz.event.ticketbookingsystem.model.SeatStatus;
 
 
 /**
- *
+ * This class handles the main ticket booking screen. 
+ * It displays available seats, allows users to select a date, 
+ * choose seats, and confirm their bookings visually.
  * @author shanamusekiwa
  */
 public class BookingView extends JFrame {
